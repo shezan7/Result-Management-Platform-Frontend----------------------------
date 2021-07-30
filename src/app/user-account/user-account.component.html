@@ -1,0 +1,114 @@
+<style>
+    body{
+        background-size: cover;        
+    }
+
+    #ui{
+        background-color: rgba(10, 90, 136, 0.5);
+    }
+    .txt{
+      color: #fff;
+      text-align: center;  
+    }
+
+    .btn{
+        background-color: palevioletred;
+        color: rgb(255, 255, 255);
+        border-width: 2px;
+        border-color: rgb(255, 255, 255);
+    }
+
+    .imp{
+        font-size: 1.6em;
+        font-weight: bolder;
+
+    }
+    .line{
+        margin-top: 50px;
+
+    }
+</style>
+
+
+
+<body>
+
+    <br>
+    <div class="txt ">
+        <h1 class="display-4 text-center imp">Welcome {{service.user.roll}}</h1>
+    </div>
+
+    <br>
+    <div id="ui">
+        <table class="table table-hover txt">
+            <thead class="thead-light">
+                <tr>
+                    <th>ROLL</th>
+                    <!-- <th>BATCH</th> -->
+                    <th>MAIL</th>
+                    <th>FINAL RESULT</th>            
+                </tr>
+            </thead> 
+                <tbody>        
+                        
+                    <tr>
+                        <td > {{service.user.roll}} </td>
+                        <!-- <td > {{service.user.batch}} </td>  -->
+                        <td > {{service.user.mail}} </td>
+                        <td > {{service.user.result}} </td>                           
+                    </tr>              
+                        
+                </tbody>
+            
+        </table>
+
+        <table class="table table-hover txt">
+            <thead class="thead-light">
+                <tr>
+                    <th>ROLL</th>
+                    <!-- <th>Semester</th> -->
+                    <th>SUBJECT</th>
+                    <!-- <th>mid</th> -->
+                    <th>QUIZ</th>
+                    <th>CLASS WORK</th>
+                    <th>MIDTERM</th>
+                    <th>FINAL</th>
+                    <th>RESULT</th>
+                    
+                </tr>
+            </thead>
+                <tbody>
+                    <ng-container *ngFor="let res of service.results">
+                        
+                            <tr  *ngIf="res.roll === currentUser.getUsername()">
+                                <td > {{res.roll}} </td>
+                                <!-- <td > {{res.semester}} </td> -->
+                                <td > {{res.courseCode}} </td>
+                                <td > {{res.mid}} </td>
+                                <td > {{res.quiz}} </td>
+                                <td > {{res.lab}} </td>
+                                <td > {{res.final}} </td>
+                                <td > {{res.courseResult}} </td>                      
+                
+                            </tr>
+                        
+                    </ng-container>
+                    
+                </tbody>
+            
+        </table>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <button class="btn btn-info btn-lg btn-block imp" type="submit" 
+                (click)="logout()">Log Out</button>
+        </div>
+        <div class="col-lg-3"></div>
+        
+    </div>
+    <br>
+    <br>
+
+</body>

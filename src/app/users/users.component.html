@@ -1,0 +1,94 @@
+<style>
+    body{
+        background-size: cover;
+    }
+
+    #ui{
+        background-color: rgba(10, 90, 136, 0.5); 
+        padding:25px;
+          
+                
+    }
+
+    
+    .pad{
+        color: rgb(255, 255, 255);
+        font-size: 1.3em;
+        font-weight: 600;
+        
+    }
+
+    .btn{
+    
+        background-color: palevioletred;
+        color: black;
+        border-width: 2px;
+        border-color: black;
+        font-weight: bold;    
+    
+    }
+
+    .text{
+        text-align: center;
+    }
+
+
+</style>
+
+
+
+<body>
+    
+
+    <div class="jumbotron py-3">
+        <h1 class="display-4 text-center">STUDENT INFORMATON</h1>
+    </div>
+
+    <div id='ui'>
+
+        <table class="table table-hover pad">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text">ROLL</th>
+                    <!-- <th>Batch</th> -->
+                    <th class="text">MAIL</th>
+                    <th class="text">RESULT</th>
+                    
+                    <th></th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr *ngFor="let us of service.users">
+                        <td *ngIf="us.roll !== 101010" class="text">{{us.roll}} </td>
+                        <!-- <td >{{us.batch}} </td> -->
+                        <td *ngIf="us.roll !== 101010" class="text">{{us.mail}} </td>
+                        <td *ngIf="us.roll !== 101010" class="text">{{us.result}} </td>
+                        
+                        <!-- <td>
+                            <i *ngIf="us.roll !== 101010" class="far fa-trash-alt fa-lg text-danger"
+                                (click)="onDelete(us.id)"></i>
+                        </td> -->
+                        <td>
+                            <button *ngIf="us.roll !== 101010" class="text-danger" 
+                                (click)="onDelete(us.id)">Delete</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            
+        </table>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <button class="btn btn-info btn-lg btn-block" type="submit" 
+                    (click)="logout()">Log Out</button>
+            </div>
+            <div class="col-lg-3"></div>
+            
+        </div>
+
+    </div>
+
+
+</body>
